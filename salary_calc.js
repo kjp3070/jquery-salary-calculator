@@ -39,6 +39,8 @@ function createEmployeeList() {
   // call the employee-submit-button when clicked
     $("#employee-submit-button").on("click", handleSalaryButton);
 
+ // delete row button
+   $(".deleteEmployee").on("click", ".deleteEmployee", deleteRow);
 }
 // global variable to set monthlyCost to zero
 let monthlyCost = 0;
@@ -79,16 +81,12 @@ function handleSalaryButton(event) {
 
   // add new row created in const elem to the salary-table tbody to the DOM
   $("#salary-table tbody").append(elem);
-  $(".deleteEmployee").on('click', deleteRow);
+
 
 
   // update monthly Cost
   monthlyCost += Number(salary);
-
-
-  // delete employee from DOM
-  //MAY NEED TO REMOVE $('body').on('click', '.deleteEmployee', deleteRow);
-
+  
   //  this one works but removes verbiage
   // NEED TO ADD STRING TEXT to include "Total Monthly Salary $"
   $("#monthly-salary").text(`${monthlyCost}`);
