@@ -1,0 +1,35 @@
+body {
+  background-color: #c0c0c0;
+  padding: 5px 10px 10px 10px;
+}
+
+h1 {
+  font-family: Cochin;
+  background-color: #696969;
+  text-align: center;
+}
+
+h2 {
+  font-family: Cochin;
+
+}
+
+th{
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: center;
+    background-color: #778899;
+    padding: 5px 10px 10px 10px;
+}
+#salary-table { 
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+td {
+    border-bottom-width: 1px;
+    border-bottom-color: #708090;
+    border-bottom-style: solid;
+    padding: 10px;
+}

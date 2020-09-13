@@ -1,74 +1,105 @@
-console.log('salary calc');
+console.log("salary calc");
 // $().ready(readyNow);
 $(document).ready(createEmployeeList);
 
-function createEmployeeList(){
-// create table
-const salaryTable = $(`
+function createEmployeeList() {
+  // create table
+  // input id is to create fill in boxes, id and placeholder will label the input box
+  // button id to create the submit button
+  const salaryTable = $(`
 <h2> Add Employee </h2>
-<input id="first-name" placeholder="First Name"/>
+<input id="first-name"placeholder="First Name"/>
 <input id="last-name" placeholder="Last Name"/>
 <input id="employee-id" placeholder="Employee ID"/>
 <input id="job-title" placeholder="Job Title"/>
 <input id="annual-salary" placeholder="Annual Salary"/>
-<button id="employee-submit-button"
-<table id="salary-table">Submit</button>
-<br>
+<button id="employee-submit-button">Submit</button>
+<table id="salary-table">
+<h2> Employees </h2>
     <thead>
-       <tr>
-           <th>First Name</th>
-           <th>Last Name</th>
-           <th>Employee ID</th>
-           <th>Job Title</th>
-           <th>Annual Salary</th>
-       </tr>
+    <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Employee ID</th>
+            <th>Job Title</th>
+            <th>Annual Salary</th>
+        </tr>
     </thead>
     <tbody>
+        <tr>
+        </tr>
     </tbody>
 </table>
-<p id="total-salary">Total Monthly Salary "</p>
+<p id="monthly-salary">Total Monthly Salary $</p>
 `);
-//call table to the DOM
-$('body').append(salaryTable);
 
-// call the employee-submit-button when clicked
-$("#employee-submit-button").on('click', handleSalaryButton);
+  //call table to the DOM
+  $("body").append(salaryTable);
 
-// delete employee from DOM
-//   COMPLETE        $('body').on('click', '.deleteEmployee', deleteRow);
+  // call the employee-submit-button when clicked
+    $("#employee-submit-button").on("click", handleSalaryButton);
 
 }
-// global variable to set totalSalary to zero
-let totalSalary = 0;
+// global variable to set monthlyCost to zero
+let monthlyCost = 0;
 
-// function to handle salary button
+// function to handle salary button 
 function handleSalaryButton(event) {
-    const empFirstName = $('#first-name').val();
-    const empLastName = $('#last-name').val();
-    const empID = $('#employee-id').val();
-    const jobTitle = $('#job-title').val();
-    const salary = $('#annual-salary').val();
-    console.log(empFirstName);
-    console.log(empLastName);
-    console.log(empID);
-    console.log(jobTitle);
-    console.log(salary);
+  // will fire when click Submit in the form
+  // below will add the input values
+  const empFirstName = $("#first-name").val();
+  const empLastName = $("#last-name").val();
+  const empID = $("#employee-id").val();
+  const jobTitle = $("#job-title").val();
+  const salary = $("#annual-salary").val();
+  console.log(empFirstName);
+  console.log(empLastName);
+  console.log(empID);
+  console.log(jobTitle);
+  console.log(salary);
 
-// clear input values
-    $("#first-name").val("");
-    $("#last-name").val("");
-    $("#employee-id").val("");
-    $("#job-title").val("");
-    $("#annual-salary").val("");
+  // clear input values
+  $("#first-name").val("");
+  $("#last-name").val("");
+  $("#employee-id").val("");
+  $("#job-title").val("");
+  $("#annual-salary").val("");
 
-// add row to the table
-   $("tbody").append(event);
+  // create new row in the table body with jQuery
+  const elem = $(`
+    <tr>
+        <td>${empFirstName}</td>
+        <td>${empLastName}</td>
+        <td>${empID}</td>
+        <td>${jobTitle}</td>
+        <td>${salary}</td>
+        <td><button class="deleteEmployee">Delete</button><td>
+    </tr>
+    `);
 
-// update total salary
-totalSalary += Number(salary);
-$('#total-salary').text(`${$totalSalary}`); 
+  // add new row created in const elem to the salary-table tbody to the DOM
+  $("#salary-table tbody").append(elem);
+  $(".deleteEmployee").on('click', deleteRow);
 
+
+  // update monthly Cost
+  monthlyCost += Number(salary);
+
+
+  // delete employee from DOM
+  //MAY NEED TO REMOVE $('body').on('click', '.deleteEmployee', deleteRow);
+
+  //  this one works but removes verbiage
+  // NEED TO ADD STRING TEXT to include "Total Monthly Salary $"
+  $("#monthly-salary").text(`${monthlyCost}`);
 }
 
-const annualSalary = $('#annual-salary').val();
+// add total salary in DOM
+const annualSalary = $("#annual-salary").val();
 // need for each button
+
+// function to be called by the delete buttons
+function deleteRow(event) {
+    console.log('in delete row');
+    
+}
