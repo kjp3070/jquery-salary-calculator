@@ -88,8 +88,8 @@ function handleSalaryButton(event) {
   monthlyCost += Number(salary);
   
   //  this one works but removes verbiage
-  // NEED TO ADD STRING TEXT to include "Total Monthly Salary $"
-  $("#monthly-salary").text(`${monthlyCost}`);
+  // 
+  $("#monthly-salary").text(`Total Monthly Salary $${monthlyCost}`);
 }
 
 // add total salary in DOM

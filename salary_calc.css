@@ -12,7 +12,6 @@ h1 {
 
 h2 {
   font-family: Cochin;
-
 }
 
 th{
@@ -36,4 +35,7 @@ td {
 }
 p{
     text-align: right;
+}
+.over-budget {
+  color: red;
 }
