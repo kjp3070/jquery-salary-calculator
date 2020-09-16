@@ -4,7 +4,7 @@ $(document).ready(createEmployeeList);
 
 function createEmployeeList() {
   // create table
-  // input id is to create fill in boxes, id and placeholder will label the input box
+  // input ids to create fill in boxes, id and placeholder will label the input box
   // button id to create the submit button
   const salaryTable = $(`
 <h2> Add Employee </h2>
@@ -33,17 +33,15 @@ function createEmployeeList() {
 <p id="monthly-salary">Total Monthly Salary $</p>
 `);
 
-  //call table to the DOM
+  //call table to the DOM  -- jquery on the body append the salaryTable
   $("body").append(salaryTable);
 
   // call the employee-submit-button when clicked
     $("#employee-submit-button").on("click", handleSalaryButton);
 
- // delete row button
+ // delete row button found on line 76 and 103
    $(".deleteEmployee").on("click", ".deleteEmployee", deleteRow);
 }
-// global variable to set monthlyCost to zero
-let monthlyCost = 0;
 
 // function to handle salary button 
 function handleSalaryButton(event) {
@@ -82,14 +80,23 @@ function handleSalaryButton(event) {
   // add new row created in const elem to the salary-table tbody to the DOM
   $("#salary-table tbody").append(elem);
 
-
-
-  // update monthly Cost
-  monthlyCost += Number(salary);
+  // update annual to monthly Cost
+  function updateToMonthlySalary() {
+    const totalMonthly = totalAnnualSalary / 12;
+    if (totalMonthly > 20000) {
+      $("#monthlySalary").addClass('over');
+      $("monthlySalary").removeClass('under')
+    } else {
+      $("monthlySalary").addClass('under');
+      $("monthlySalary").removeClass('over');
+    }
+    // I can't get the total salary to add to the DOM
+     $("#monthlySalary").text(totalMonthly.toFixed(2));
+  }
   
-  //  this one works but removes verbiage
-  // 
-  $("#monthly-salary").text(`Total Monthly Salary $${monthlyCost}`);
+
+  // place monthly salary to the DOM
+  //$("#monthly-salary").text(`Total Monthly Salary $${monthlyCost}`);
 }
 
 // add total salary in DOM

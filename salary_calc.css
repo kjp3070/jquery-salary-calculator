@@ -36,6 +36,9 @@ td {
 p{
     text-align: right;
 }
-.over-budget {
-  color: red;
+.over {
+  background-color: red;
+}
+.under {
+  background-color: black;
 }
