@@ -40,7 +40,7 @@ function createEmployeeList() {
     $("#employee-submit-button").on("click", handleSalaryButton);
 
  // delete row button found on line 76 and 103
-   $(".deleteEmployee").on("click", ".deleteEmployee", deleteRow);
+   $(".table").on("click", ".deleteEmployee", deleteRow);
 }
 
 // function to handle salary button 
@@ -81,15 +81,18 @@ function handleSalaryButton(event) {
   $("#salary-table tbody").append(elem);
 
   // update annual to monthly Cost
+  // NOT WORKING
   function updateToMonthlySalary() {
     const totalMonthly = totalAnnualSalary / 12;
     if (totalMonthly > 20000) {
       $("#monthlySalary").addClass('over');
-      $("monthlySalary").removeClass('under')
+      $("#monthlySalary").removeClass('under')
     } else {
-      $("monthlySalary").addClass('under');
-      $("monthlySalary").removeClass('over');
+      $("#monthlySalary").addClass('under');
+      $("#monthlySalary").removeClass('over');
     }
+    console.log(totalMonthly);
+    
     // I can't get the total salary to add to the DOM
      $("#monthlySalary").text(totalMonthly.toFixed(2));
   }
@@ -99,12 +102,18 @@ function handleSalaryButton(event) {
   //$("#monthly-salary").text(`Total Monthly Salary $${monthlyCost}`);
 }
 
-// add total salary in DOM
-const annualSalary = $("#annual-salary").val();
-// need for each button
+
 
 // function to be called by the delete buttons
+// NOT WORKING
 function deleteRow(event) {
+    const reallyDelete = confirm("Press continue to delete the employee")
+    if(reallyDelete){
+      // find row in DOM and remove it
+      const me = $(event.target);
+      const entireRow = me.closest('tr');
+      entireRow.remove();
+    }
     console.log('in delete row');
     
 }
