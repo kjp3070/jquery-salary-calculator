@@ -82,7 +82,7 @@ function handleSalaryButton(event) {
 
   // update annual to monthly Cost
   // NOT WORKING
-  function updateToMonthlySalary() {
+  /* function updateToMonthlySalary() {
     const totalMonthly = totalAnnualSalary / 12;
     if (totalMonthly > 20000) {
       $("#monthlySalary").addClass('over');
@@ -91,11 +91,11 @@ function handleSalaryButton(event) {
       $("#monthlySalary").addClass('under');
       $("#monthlySalary").removeClass('over');
     }
-    console.log(totalMonthly);
+    console.log(totalMonthly); */
     
-    // I can't get the total salary to add to the DOM
+    /* // I can't get the total salary to add to the DOM
      $("#monthlySalary").text(totalMonthly.toFixed(2));
-  }
+  } */
   
 
   // place monthly salary to the DOM
